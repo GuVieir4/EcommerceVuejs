@@ -14,41 +14,57 @@ onMounted(async () => {
 </script>
 
 <template>
-    <section class="reviews" v-if="produto">
-        <div class="cards-reviews flex flex-wrap gap-[24px] justify-center">
-            <div class="card-review flex w-[30%] h-auto flex-col gap-[24px] items-start justify-center py-[32px] px-[42px]
-            rounded-[16px] bg-[#191919]">
-                <div class="info-reviewer flex flex-col items-center gap-[16px]">
-                    <h1 class="self-stretch text-[20px] font-bold text-gray-100">{{ produto.reviews[0].reviewerName }}
-                    </h1>
-                    <span class="self-stretch text-[20px] gap-[12px] text-gray-100 font-bold">⭐ {{
-                        produto.reviews[0].rating }}</span>
-                </div>
-                <p class="comment text-[20px] leading-[28px] self-stretch text-gray-100">{{ produto.reviews[0].comment
-                }}</p>
-            </div>
-            <div class="card-review flex w-[30%] h-auto flex-col gap-[24px] items-start justify-center py-[32px] px-[42px]
-            rounded-[16px] bg-[#191919]">
-                <div class="info-reviewer flex flex-col items-center gap-[16px]">
-                    <h1 class="self-stretch text-[20px] font-bold text-gray-100">{{ produto.reviews[1].reviewerName }}
-                    </h1>
-                    <span class="self-stretch text-[20px] gap-[12px] text-gray-100 font-bold">⭐ {{
-                        produto.reviews[1].rating }}</span>
-                </div>
-                <p class="comment text-[20px] leading-[282x] self-stretch text-gray-100">{{ produto.reviews[1].comment
-                }}</p>
-            </div>
-            <div class="card-review flex w-[30%] h-auto flex-col gap-[24px] items-start justify-center py-[32px] px-[42px]
-            rounded-[16px] bg-[#191919]">
-                <div class="info-reviewer flex flex-col items-center gap-[16px]">
-                    <h1 class="self-stretch text-[20px] font-bold text-gray-100">{{ produto.reviews[2].reviewerName }}
-                    </h1>
-                    <span class="self-stretch text-[20px] gap-[12px] text-gray-100 font-bold">⭐ {{
-                        produto.reviews[2].rating }}</span>
-                </div>
-                <p class="comment text-[20px] leading-[28px] self-stretch text-gray-100">{{ produto.reviews[2].comment
-                }}</p>
-            </div>
+  <section v-if="produto" class="w-full py-[96px] px-[24px] md:px-[160px]">
+    <h2 class="text-[32px] md:text-[40px] font-bold text-gray-900 mb-[48px] text-center">
+      Avaliações dos Clientes
+    </h2>
+
+    <div class="flex flex-wrap justify-center gap-[32px]">
+      <div class="bg-[#191919] border border-[#2c2c2c] rounded-[16px] shadow-md w-full max-w-[360px] p-[32px] flex flex-col gap-[24px] transition-all hover:shadow-xl hover:scale-[1.015]">
+        <div class="flex items-center gap-[16px]">
+          <div class="w-[48px] h-[48px] rounded-full bg-[#2e2e2e] flex items-center justify-center text-white text-[18px] font-semibold">
+            {{ produto.reviews[0].reviewerName.charAt(0).toUpperCase() }}
+          </div>
+          <div class="flex flex-col">
+            <span class="text-white text-[18px] font-bold">{{ produto.reviews[0].reviewerName }}</span>
+            <span class="text-[#f4f4f4] text-sm">⭐ {{ produto.reviews[0].rating }}/5</span>
+          </div>
         </div>
-    </section>
+        <p class="text-[#a7a7a7] text-[16px] italic">
+          "{{ produto.reviews[0].comment }}"
+        </p>
+      </div>
+
+      <div class="bg-[#191919] border border-[#2c2c2c] rounded-[16px] shadow-md w-full max-w-[360px] p-[32px] flex flex-col gap-[24px] transition-all hover:shadow-xl hover:scale-[1.015]">
+        <div class="flex items-center gap-[16px]">
+          <div class="w-[48px] h-[48px] rounded-full bg-[#2e2e2e] flex items-center justify-center text-white text-[18px] font-semibold">
+            {{ produto.reviews[1].reviewerName.charAt(0).toUpperCase() }}
+          </div>
+          <div class="flex flex-col">
+            <span class="text-white text-[18px] font-bold">{{ produto.reviews[1].reviewerName }}</span>
+            <span class="text-[#f4f4f4] text-sm">⭐ {{ produto.reviews[1].rating }}/5</span>
+          </div>
+        </div>
+        <p class="text-[#a7a7a7] text-[16px] italic">
+          "{{ produto.reviews[1].comment }}"
+        </p>
+      </div>
+
+      <div class="bg-[#191919] border border-[#2c2c2c] rounded-[16px] shadow-md w-full max-w-[360px] p-[32px] flex flex-col gap-[24px] transition-all hover:shadow-xl hover:scale-[1.015]">
+        <div class="flex items-center gap-[16px]">
+          <div class="w-[48px] h-[48px] rounded-full bg-[#2e2e2e] flex items-center justify-center text-white text-[18px] font-semibold">
+            {{ produto.reviews[2].reviewerName.charAt(0).toUpperCase() }}
+          </div>
+          <div class="flex flex-col">
+            <span class="text-white text-[18px] font-bold">{{ produto.reviews[2].reviewerName }}</span>
+            <span class="text-[#f4f4f4] text-sm">⭐ {{ produto.reviews[2].rating }}/5</span>
+          </div>
+        </div>
+        <p class="text-[#a7a7a7] text-[16px] italic">
+          "{{ produto.reviews[2].comment }}"
+        </p>
+      </div>
+    </div>
+  </section>
 </template>
+

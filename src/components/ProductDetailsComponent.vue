@@ -14,73 +14,91 @@ onMounted(async () => {
 </script>
 
 <template>
+  <body class="text-gray-900">
+    <section
+      class="grid grid-cols-1 lg:grid-cols-2 gap-16 px-6 md:px-16 lg:px-32 py-20 max-w-[1440px] mx-auto items-center"
+      v-if="produto"
+    >
+      <!-- Imagem do produto -->
+      <div class="relative rounded-2xl overflow-hidden bg-white p-6 flex justify-center items-center border border-gray-200">
+        <img :src="produto.images[0]" :alt="produto.title" class="w-full max-w-md h-auto object-contain transition-transform duration-300 hover:scale-105 "
+        />
+      </div>
 
-    <body class="flex flex-col items-end">
-        <section
-            class="flex items-center self-stretch gap-[48px] py-[112px] px-[160px] justify-center md:justify-normal"
-            v-if="produto">
-            <img :src="produto.images[0]" :alt="produto.title" class="w-[410px] h-[510px] object-contain">
-            <aside class="flex flex-col items-start gap-[32px]">
-                <div class="name">
-                    <h1 class="text-gray-900 text-[40px] font-bold leading-[40px]">{{ produto.title }}</h1>
-                </div>
-                <div class="preco flex items-center gap-2">
-                    <h1 class="text-gray-900 text-[40px] font-bold">{{ produto.price }}</h1>
-                    <span v-if="produto.discountPercentage > 0"
-                        class="ml-2 bg-red-100 text-red-700 text-xs font-semibold px-2 py-1 rounded">
-                        {{ Math.floor(produto.discountPercentage) }}% OFF
-                    </span>
-                </div>
-                <div class="tags flex items-center gap-[16px] self-stretch md:gap-[8px]">
-                    <span
-                        class="tag gap-[8px] flex justify-center items-center rounded-[8px] border border-solid border-black py-4 px-6 capitalize">{{
-                        produto.tags[0] }}</span>
-                    <span
-                        class="tag gap-[8px] flex justify-center items-center rounded-[8px] border border-solid border-black py-4 px-6 capitalize">{{
-                        produto.tags[1] }}</span>
-                </div>
-                <div class="infos flex gap-[16px] self-stretch flex-wrap content-start md:gap-[8px]">
-                    <div
-                        class="info bg-[#f4f4f4] flex min-w-[168px] gap-[8px] items-center justify-center rounded-[8px] px-2 h-[80px]">
-                        <i class="fa-solid fa-expand text-[24px]"></i>
-                        <div class="info flex flex-col">
-                            <span class="text-[#a7a7a7] text-sm leading-[16px]">Width</span>
-                            <span class="leading-[16px] text-[#4e4e4e] text-sm font-bold">{{ produto.dimensions.width
-                                }}</span>
-                        </div>
-                    </div>
-                    <div
-                        class="info bg-[#f4f4f4] flex min-w-[168px] gap-[8px] items-center justify-center rounded-[8px] px-2 h-[80px]">
-                        <i class="fa-solid fa-expand text-[24px]"></i>
-                        <div class="info flex flex-col">
-                            <span class="text-[#a7a7a7] text-sm leading-[16px]">Height</span>
-                            <span class="leading-[16px] text-[#4e4e4e] text-sm font-bold">{{ produto.dimensions.height
-                                }}</span>
-                        </div>
-                    </div>
-                    <div
-                        class="info bg-[#f4f4f4] flex min-w-[168px] gap-[8px] items-center justify-center rounded-[8px] px-2 h-[80px]">
-                        <i class="fa-solid fa-expand text-[24px]"></i>
-                        <div class="info flex flex-col">
-                            <span class="text-[#a7a7a7] text-sm leading-[16px]">Depth</span>
-                            <span class="leading-[16px] text-[#4e4e4e] text-sm font-bold">{{ produto.dimensions.depth
-                                }}</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="description">
-                    <p class="self-stretch text-[#6c6c6c] text-sm leading-[24px]">{{ produto.description }}</p>
-                </div>
-                <div class="buttons flex items-start content-start gap-[16px] self-stretch flex-wrap">
-                    <button
-                        class="flex py-[16px] px-[56px] bg-transparent justify-center items-center rounded-[6px] border border-solid border-black hover:scale-105">Back
-                        to Home</button>
-                    <button
-                        class="flex items-center justify-center rounded-[6px] bg-[#000] py-[16px] px-[56px] text-base text-[#fff] hover:scale-105">
-                        Add to Cart
-                    </button>
-                </div>
-            </aside>
-        </section>
-    </body>
+      <!-- Detalhes -->
+      <aside
+        class="backdrop-blur-xl bg-white shadow-xl rounded-2xl p-8 flex flex-col gap-8 border border-gray-200"
+      >
+        <!-- Título -->
+        <h1 class="text-[32px] md:text-[40px] font-bold tracking-tight leading-tight text-[#1d1d1d]">
+          {{ produto.title }}
+        </h1>
+
+        <!-- Preço e Desconto -->
+        <div class="flex items-center gap-4 flex-wrap">
+          <span class="text-3xl font-semibold text-gray-900">${{ produto.price }}</span>
+          <span
+            v-if="produto.discountPercentage > 0"
+            class="bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-md"
+          >
+            {{ Math.floor(produto.discountPercentage) }}% OFF
+          </span>
+        </div>
+
+        <span v-if="produto.stock" class="text-xs font-bold font-medium px-3 py-2 rounded-md w-1/4 text-center"
+            :class="produto.stock > 10 ? 'bg-green-200 text-green-800' : 'bg-yellow-200 text-yellow-800'">
+            {{ produto.stock }} em estoque
+        </span>
+
+        <div class="flex gap-3 flex-wrap">
+            <span class="uppercase bg-black text-white text-xs px-7 py-5 rounded-md tracking-wide shadow-md hover:scale-105">{{ produto.tags[0] }}</span>
+            <span class="uppercase bg-black text-white text-xs px-7 py-5 rounded-md tracking-wide shadow-md hover:scale-105">{{ produto.tags[1] }}</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div
+            class="flex items-center gap-4 p-4 bg-[#f9f9f9] rounded-lg border border-gray-300 hover:scale-105">
+            <i class="fa-solid fa-ruler-combined text-xl text-[#034559]"></i>
+            <div>
+              <p class="text-gray-500 text-sm">Width</p>
+              <p class="font-semibold">{{ produto.dimensions.width }}</p>
+            </div>
+          </div>
+          <div
+            class="flex items-center gap-4 p-4 bg-[#f9f9f9] rounded-lg border border-gray-300 hover:scale-105">
+            <i class="fa-solid fa-ruler-vertical text-xl text-[#034559]"></i>
+            <div>
+              <p class="text-gray-500 text-sm">Height</p>
+              <p class="font-semibold">{{ produto.dimensions.height }}</p>
+            </div>
+          </div>
+          <div
+            class="flex items-center gap-4 p-4 bg-[#f9f9f9] rounded-lg border border-gray-300 hover:scale-105">
+            <i class="fa-solid fa-cube text-xl text-[#034559]"></i>
+            <div>
+              <p class="text-gray-500 text-sm">Depth</p>
+              <p class="font-semibold">{{ produto.dimensions.depth }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Descrição -->
+        <p class="text-gray-600 text-sm leading-relaxed border-l-4 border-[#034559] pl-4 italic">
+          {{ produto.description }}
+        </p>
+
+        <!-- Botões -->
+        <div class="flex gap-4 flex-wrap mt-4 w-full">
+        <RouterLink to="/">
+          <button class="border border-gray-900 text-gray-900 px-6 py-3 rounded-lg hover:bg-gray-900 hover:text-white hover:scale-105 transition-all duration-200">
+            Back to Home
+          </button>
+        </RouterLink>
+          <button class="bg-[#034559] text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300">
+            Add to Cart
+          </button>
+        </div>
+      </aside>
+    </section>
+  </body>
 </template>
