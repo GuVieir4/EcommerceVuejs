@@ -11,10 +11,10 @@
 
     <!-- Links Desktop -->
     <ul class="hidden md:flex gap-8 items-center">
-      <li><router-link to="/" class="flex items-center gap-1 hover:text-gray-200"><Home class="w-5 h-5" /> Início</router-link></li>
+      <li><router-link to="/" class="flex items-center gap-1 hover:text-gray-200"><Home class="w-5 h-5" /> Home</router-link></li>
       <li class="relative group">
         <button class="flex items-center gap-1 hover:text-gray-200">
-          <LayoutGrid class="w-5 h-5" /> Categorias
+          <LayoutGrid class="w-5 h-5" /> Categories
         </button>
         <ul class="absolute top-8 left-0 bg-white text-black shadow-md rounded-md p-2 hidden group-hover:block z-50">
           <li v-for="cat in categories" :key="cat" class="hover:bg-gray-200 rounded px-2 py-1">
@@ -22,8 +22,8 @@
           </li>
         </ul>
       </li>
-      <li><router-link to="/sobre" class="flex items-center gap-1 hover:text-gray-200"><Info class="w-5 h-5" /> Sobre</router-link></li>
-      <li><router-link to="/contato" class="flex items-center gap-1 hover:text-gray-200"><Phone class="w-5 h-5" /> Contato</router-link></li>
+      <li><router-link to="/sobre" class="flex items-center gap-1 hover:text-gray-200"><Info class="w-5 h-5" /> About Us</router-link></li>
+      <li><router-link to="/contato" class="flex items-center gap-1 hover:text-gray-200"><Phone class="w-5 h-5" /> Contact</router-link></li>
     </ul>
 
     <!-- Busca + Carrinho -->
@@ -34,7 +34,7 @@
           v-model="store.searchQuery"
           @keyup.enter="goToSearch"
           type="text"
-          placeholder="Buscar..."
+          placeholder="Search..."
           class="px-4 py-2 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-white"
         />
         <button @click="goToSearch" class="absolute right-2 top-1/2 -translate-y-1/2 text-black">

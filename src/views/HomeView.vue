@@ -5,10 +5,10 @@
       class="bg-gradient-to-r from-blue-900 to-blue-700 rounded-2xl p-8 mb-10 flex flex-col md:flex-row items-center justify-between shadow-lg">
       <div class="max-w-xl">
         <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-white">
-          Ofertas Especiais na KiraShop
+          Special Offers at Kirashop
         </h2>
         <p class="text-lg text-blue-100 mb-6">
-          Melhores produtos com preços incríveis. Compre agora mesmo!
+          The best products at incredible prices. Buy now!
         </p>
         <router-link
           to="/categoria/sale"
@@ -19,7 +19,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m5-9v9m4-9v9m4-9l2 9" />
           </svg>
-          Ver Ofertas
+          See Offers
         </router-link>
       </div>
       <img
@@ -32,10 +32,10 @@
     <!-- Seção de Produtos -->
     <section>
       <h1 class="text-3xl font-bold text-center mb-6">
-        Produtos em Destaque
+        Featured Products
       </h1>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
         <produtoCard
           v-for="p in produtos"
           :key="p.id"
@@ -55,13 +55,13 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M15 19l-7-7 7-7" />
           </svg>
-          Anterior
+          Back
         </button>
         <button
           @click="nextPage"
           class="inline-flex items-center gap-2 bg-blue-800 text-yellow-400 font-semibold px-5 py-2 rounded hover:bg-blue-900"
         >
-          Próximo
+          Next
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
             viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -80,7 +80,7 @@ import axios from 'axios'
 import produtoCard from '../components/ProdutoCardComponent.vue'
 
 const offset = ref(0)
-const limit = 12
+const limit = 10
 
 const produtos = ref([])
 
