@@ -36,7 +36,7 @@
 
 <script setup>
 import { computed } from 'vue';
-import { useCarrinhoStore } from '../stores/cart';
+import { useCarrinhoStore } from '../stores/carrinho';
 
 const carrinho = useCarrinhoStore();
 

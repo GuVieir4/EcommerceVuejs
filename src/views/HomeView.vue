@@ -46,27 +46,11 @@
       <!-- Paginação -->
       <div class="flex justify-center gap-4 mt-8">
         <button
-          @click="previousPage"
-          class="inline-flex items-center gap-2 bg-blue-800 text-yellow-400 font-semibold px-5 py-2 rounded hover:bg-blue-900 disabled:opacity-50"
-          :disabled="offset === 0"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
-            viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M15 19l-7-7 7-7" />
-          </svg>
-          Back
+          @click="previousPage" class="inline-flex items-center gap-2 bg-blue-800 text-yellow-400 font-semibold px-5 py-2 rounded hover:bg-blue-900 disabled:opacity-50" :disabled="offset === 0">
+          <i class="fa-solid fa-arrow-left w-5 h-5 flex justify-center items-center"></i>Back
         </button>
-        <button
-          @click="nextPage"
-          class="inline-flex items-center gap-2 bg-blue-800 text-yellow-400 font-semibold px-5 py-2 rounded hover:bg-blue-900"
-        >
-          Next
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
-            viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M9 5l7 7-7 7" />
-          </svg>
+        <button @click="nextPage" class="inline-flex items-center gap-2 bg-blue-800 text-yellow-400 font-semibold px-5 py-2 rounded hover:bg-blue-900">
+          Next <i class="fa-solid fa-arrow-right w-5 h-5 flex justify-center items-center"></i>
         </button>
       </div>
     </section>

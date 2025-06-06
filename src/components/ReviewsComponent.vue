@@ -16,7 +16,7 @@ onMounted(async () => {
 <template>
   <section v-if="produto" class="w-full py-[96px] px-[24px] md:px-[160px]">
     <h2 class="text-[32px] md:text-[40px] font-bold text-gray-900 mb-[48px] text-center">
-      Avaliações dos Clientes
+      User Reviews
     </h2>
 
     <div class="flex flex-wrap justify-center gap-[32px]">

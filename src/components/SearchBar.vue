@@ -6,7 +6,7 @@
       @input="buscar"
       @keydown.enter="buscarEnter"
       class="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black bg-white pr-10"
-      placeholder="Buscar produtos..."
+      placeholder="Search products..."
       autocomplete="off"
     />
 
@@ -19,7 +19,7 @@
 
     <ul
       v-if="sugestoes.length"
-      class="absolute bg-white border border-gray-300 w-full mt-1 z-10 rounded shadow-md max-h-64 overflow-y-auto text-black"
+      class="absolute bg-white border border-gray-300 w-full mt-1 z-50 rounded shadow-md max-h-64 overflow-y-auto text-black"
     >
       <li
         v-for="s in sugestoes"
