@@ -16,8 +16,8 @@ const toastMessage = ref("")
 const botaoFavorito = () => {
   isFavorite.value = !isFavorite.value
   toastMessage.value = isFavorite.value
-    ? `Produto "${produto.name}" adicionado aos favoritos!`
-    : `Produto "${produto.name}" removido dos favoritos.`
+    ? `Produto "${produto.title}" adicionado aos favoritos!`
+    : `Produto "${produto.title}" removido dos favoritos.`
   showToast.value = true
 }
 
@@ -38,12 +38,16 @@ const irParaDetalhes = () => {
       </button>
 
       <div class="p-4 pt-10 relative">
-        <img :src="produto.image" :alt="produto.title"
-          class="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300 ease-in-out mb-4">
+        <img
+          :src="produto.image"
+          :alt="produto.title"
+          @error="e => e.target.src = 'https://via.placeholder.com/150'"
+          class="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300 ease-in-out mb-4"
+        >
       </div>
 
       <div class="p-4 flex flex-col flex-grow">
-        <h2 class="text-lg font-semibold text-gray-800 mb-1 truncate text-center">{{ produto.name }}</h2>
+        <h2 class="text-lg font-semibold text-gray-800 mb-1 truncate text-center">{{ produto.title }}</h2>
         <p class="text-xl font-bold mb-4 mt-auto">${{ produto.price }}</p>
         <p class="text-[12px] text-gray-400">{{ produto.stock }} em estoque</p>
         <button @click="irParaDetalhes"

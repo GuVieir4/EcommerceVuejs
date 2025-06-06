@@ -8,8 +8,7 @@
         Kirashop
       </router-link>
     </div>
-
-    <!-- Links Desktop -->
+    
     <ul class="hidden md:flex gap-8 items-center">
       <li><router-link to="/" class="flex items-center gap-1 hover:text-gray-200"><Home class="w-5 h-5" /> Home</router-link></li>
       <li class="relative group">
@@ -26,36 +25,19 @@
       <li><router-link to="/contato" class="flex items-center gap-1 hover:text-gray-200"><Phone class="w-5 h-5" /> Contact</router-link></li>
     </ul>
 
-    <!-- Busca + Carrinho -->
-    <div class="flex items-center gap-6">
-      <!-- Busca -->
-      <div class="relative">
-        <input
-          v-model="store.searchQuery"
-          @keyup.enter="goToSearch"
-          type="text"
-          placeholder="Search..."
-          class="px-4 py-2 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-white"
-        />
-        <button @click="goToSearch" class="absolute right-2 top-1/2 -translate-y-1/2 text-black">
-          <Search class="w-5 h-5" />
-        </button>
-      </div>
-
-      <!-- Carrinho -->
-      <router-link to="/carrinho" class="relative hover:text-gray-200">
-        <ShoppingCart class="w-6 h-6" />
-        <span
-          v-if="store.cart.length > 0"
-          class="absolute -top-2 -right-3 bg-red-600 text-white text-xs rounded-full px-2"
-        >
-          {{ totalItems }}
-        </span>
-      </router-link>
-    </div>
+<div class="flex items-center gap-6">
+  <SearchBar />
+  <router-link to="/carrinho" class="relative hover:text-gray-200">
+    <ShoppingCart class="w-6 h-6" />
+    <span
+      v-if="store.cart.length > 0"
+      class="absolute -top-2 -right-3 bg-red-600 text-white text-xs rounded-full px-2"
+    >
+      {{ totalItems }}
+    </span>
+  </router-link>
+</div>
   </nav>
-
-  <!-- Mobile Menu -->
   <div v-if="isMenuOpen" class="md:hidden bg-blue-700 text-white px-6 py-4">
     <ul class="flex flex-col gap-4">
       <li><router-link to="/" @click="toggleMenu">Início</router-link></li>
@@ -82,8 +64,7 @@
 import { ref, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from '../stores/useStore'
-
-// Ícones
+import SearchBar from '@/components/SearchBar.vue'
 import { Home, LayoutGrid, Info, Phone, Search, ShoppingCart, Menu, ChevronDown } from 'lucide-vue-next'
 
 const store = useStore()
