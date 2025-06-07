@@ -1,6 +1,6 @@
 <template>
-  <div class="p-8">
-    <h1 class="text-2xl font-bold mb-6">Carrinho de Compras</h1>
+  <div class="p-8 min-h-screen">
+    <h1 class="text-2xl font-bold mb-6">Shopping cart</h1>
 
     <div v-if="items.length > 0" class="space-y-4">
       <div v-for="item in items" :key="item.id" class="flex items-center justify-between border p-4 rounded">
@@ -29,7 +29,7 @@
     </div>
 
     <div v-else>
-      <p>Seu carrinho está vazio.</p>
+      <p>Your cart is empty.</p>
     </div>
   </div>
 </template>

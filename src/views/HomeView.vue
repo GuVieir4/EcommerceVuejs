@@ -11,7 +11,7 @@
           The best products at incredible prices. Buy now!
         </p>
         <router-link
-          to="/categoria/sale"
+          to="/"
           class="inline-flex items-center gap-2 bg-yellow-400 text-blue-900 font-semibold px-6 py-3 rounded-full hover:bg-yellow-500 transition"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
@@ -32,7 +32,7 @@
     <!-- Seção de Produtos -->
     <section>
       <h1 class="text-3xl font-bold text-center mb-6">
-        Featured Products
+        All Products
       </h1>
 
       <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">

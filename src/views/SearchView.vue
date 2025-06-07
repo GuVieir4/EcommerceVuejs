@@ -15,6 +15,9 @@ const buscarProdutos = async () => {
     produtos.value = response.data.products.map(p => ({
       ...p,
       image: p.images[0] || '', 
+      name: p.title,
+      stock: p.stock,
+      description: p.description,
     }))
     ordenarProdutos()
   }
@@ -40,12 +43,13 @@ watch(() => route.query.q, (novo) => {
   termo.value = novo
   buscarProdutos()
 })
+
 </script>
 
 <template>
   <div class="p-8">
     <div class="flex justify-between items-center mb-6">
-      <h1 class="text-2xl font-bold">Resultados para "{{ termo }}"</h1>
+      <h1 class="text-2xl font-bold">Results for: "{{ termo }}"</h1>
 
       <select
         v-model="filtro"
